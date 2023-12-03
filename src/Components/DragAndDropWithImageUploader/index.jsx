@@ -33,7 +33,7 @@ const DropZone = ({ handleModalShow }) => {
   const handleCameraStart = async () => {
     setIsCameraOpen(true);
     try {
-      const cameraStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
+      const cameraStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' } });
       setStream(cameraStream);
       if (videoRef.current) {
         videoRef.current.srcObject = cameraStream;
