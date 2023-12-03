@@ -94,7 +94,7 @@ const DropZone = ({ handleModalShow }) => {
 
   return (
     <div className="flex flex-col items-center justify-center max-h-[60vh] gap-4">
-      {!isCameraOpen || !convertedImage ? (
+      {!isCameraOpen ? (
         <>
           <div
             {...getRootProps()}
