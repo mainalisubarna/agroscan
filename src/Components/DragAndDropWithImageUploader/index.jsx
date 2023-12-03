@@ -98,7 +98,7 @@ const DropZone = ({ handleModalShow }) => {
         <>
           <div
             {...getRootProps()}
-            className={`border-2 border-dashed p-8 text-center ${isDragActive ? 'border-green-500 bg-green-100' : 'border-gray-300'
+            className={`border-2 border-dashed p-8 text-center cursor-pointer ${isDragActive ? 'border-green-500 bg-green-100' : 'border-gray-300'
               }`}
           >
             <input {...getInputProps()} />
@@ -125,7 +125,7 @@ const DropZone = ({ handleModalShow }) => {
           ) : (
             <video
               ref={videoRef}
-              className="max-w-full h-auto"
+              className="max-w-[22vh] h-auto"
               style={{ display: "block", cursor: "pointer" }}
               onClick={() => videoRef.current.play()}
             />
