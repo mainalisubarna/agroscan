@@ -10,7 +10,7 @@ const DropZone = ({ handleModalShow }) => {
   const [isCameraOpen, setIsCameraOpen] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
   const [convertedImage, setConvertedImage] = useState(null);
-  const { getRootProps, isDragActive } = useDropzone({
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
     accept: "image/*",
     onDrop: (acceptedFiles) => {
       const file = acceptedFiles[0];
@@ -94,29 +94,26 @@ const DropZone = ({ handleModalShow }) => {
 
   return (
     <div className="flex flex-col items-center justify-center max-h-[60vh] gap-4">
-      {!isCameraOpen ? (
-        <div
-          className={`mb-4 ${isDragActive ? "border-green-600" : "border-gray-300"
-            }`}
-        >
-          <label
+      {!isCameraOpen || !convertedImage ? (
+        <>
+          <div
             {...getRootProps()}
-            htmlFor="image-upload"
-            className={`cursor-pointer block w-full p-4 border border-dashed rounded-md text-center ${isDragActive ? "bg-green-100" : "bg-white"
+            className={`border-2 border-dashed p-8 text-center ${isDragActive ? 'border-green-500 bg-green-100' : 'border-gray-300'
               }`}
           >
-            <p className={`text-${isDragActive ? "green-500" : "gray-600"}`}>
-              {isDragActive
-                ? "Drop the image here"
-                : "Drag 'n' drop an image here, or click to select one"}
-            </p>
-          </label>
+            <input {...getInputProps()} />
+            {isDragActive ? (
+              <p className="text-green-500">Drop the files here</p>
+            ) : (
+              <p className="text-gray-600">Drag 'n' drop some files here, or click to select files</p>
+            )}
+          </div>
           {convertedImage && <img
             src={convertedImage}
             alt="Uploaded"
             className="max-w-full h-auto"
           />}
-        </div>
+        </>
       ) : (
         <>
           {capturedImageUrl ? (
