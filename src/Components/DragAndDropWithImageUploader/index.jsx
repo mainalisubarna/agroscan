@@ -111,7 +111,7 @@ const DropZone = ({ handleModalShow }) => {
           {convertedImage && <img
             src={convertedImage}
             alt="Uploaded"
-            className="w-auto h-[20vh]"
+            className="w-auto h-[40vh]"
           />}
         </>
       ) : (
@@ -120,12 +120,12 @@ const DropZone = ({ handleModalShow }) => {
             <img
               src={capturedImageUrl}
               alt="Captured"
-              className="max-w-full h-auto"
+              className="w-auto h-[40vh]"
             />
           ) : (
             <video
               ref={videoRef}
-              className="max-w-[22vh] h-auto"
+              className="w-auto h-[40vh]"
               style={{ display: "block", cursor: "pointer" }}
               onClick={() => videoRef.current.play()}
             />
