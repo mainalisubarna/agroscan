@@ -111,7 +111,7 @@ const DropZone = ({ handleModalShow }) => {
           {convertedImage && <img
             src={convertedImage}
             alt="Uploaded"
-            className="max-w-full h-auto"
+            className="w-auto h-[20vh]"
           />}
         </>
       ) : (
