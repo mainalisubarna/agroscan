@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   isLogged: false,
   jwtToken: "",
+  isLoading : false,
 };
 
 const authSlice = createSlice({
@@ -15,8 +16,11 @@ const authSlice = createSlice({
     logout: () => {
       localStorage.setItem("persist:root", "");
     },
+    loadingScreen : (state) => {
+    (state.isLoading = !state.isLoading)
+    }
   },
 });
 
 export default authSlice.reducer;
-export const { login, logout } = authSlice.actions;
+export const { login, logout,loadingScreen } = authSlice.actions;
